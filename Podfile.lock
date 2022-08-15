@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.0.5)
+  - Kingfisher (6.3.1)
+  - swift-vibrant (1.0.0)
+  - UIImageColors (2.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.2)
+  - Kingfisher (~> 6.3.1)
+  - swift-vibrant
+  - UIImageColors
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - swift-vibrant
+    - UIImageColors
+
+SPEC CHECKSUMS:
+  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
+  swift-vibrant: 3def73c5c281db74f420ec386590d9c1c5b0995c
+  UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
+
+PODFILE CHECKSUM: 280142d23c52f6e546a8fba5f33064e56d8ed08f
+
+COCOAPODS: 1.11.3
