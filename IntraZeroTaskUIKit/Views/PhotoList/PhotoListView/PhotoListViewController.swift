@@ -14,12 +14,20 @@ class PhotoListViewController: UIViewController {
     @IBOutlet weak var previousBtnText: UIButton!
     
     @IBOutlet weak var pageNum: UILabel!
-      @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
     @IBOutlet weak var photosTableVIew: UITableView!
     
     var page : Int = 1
     var photoListViewModel : PhotosListViewModel?
     var photoList :[[Photo]]?
+    
+    
+    
+    let images = ["macAD" ,"papajohnsAd" , "cocacolaAD"  ]
+    var activeImageIndex = 0
+    
+    let imageSwitchTimer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.photosTableVIew.delegate = self
@@ -32,6 +40,10 @@ class PhotoListViewController: UIViewController {
         self.RequestData()
         self.pageTitle.text = "Welcome"
         self.previousBtnText.setTitle("", for: UIControl.State.normal)
+//
+//        self.photosTableVIew.register(CustomHeader.self,
+//            forHeaderFooterViewReuseIdentifier: "sectionHeader")
+//        self.photosTableVIew.contentInset = UIEdgeInsets(top: -1, left: 0, bottom: 0, right: 0)
 
         
     }
@@ -45,7 +57,8 @@ class PhotoListViewController: UIViewController {
         if page > 0 {
             self.page -= 1
             self.RequestData()
-        }else{
+        }
+        if page == 1{
             self.previousBtnText.setTitle("", for: UIControl.State.normal)
 
         }
@@ -63,7 +76,7 @@ class PhotoListViewController: UIViewController {
     func RequestData(){
         self.photoListViewModel?.changePage(page: String(page),completion: { photoGrouped in
             self.photoList = photoGrouped
-            self.photosTableVIew.rowHeight = UIScreen.main.bounds.height/5
+            self.photosTableVIew.rowHeight =  200 // UIScreen.main.bounds.height / 4
             self.nextBtnText.setTitle("next", for: UIControl.State.normal)
             self.photosTableVIew.reloadData()
             self.pageNum.text = self.page.description
@@ -81,23 +94,41 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
         return photoList?[section].count ?? 0
     }
 
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let adView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 30))
-        
-        adView.image = UIImage( named: "macAD")
-
-        return adView
-    }
-
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let adView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 30))
+//
+//        adView.image = UIImage( named: "macAD")
+//
+//        return adView
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return  30
+//    }
+//
+//     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return section == 0 ? 0 : 32
+//        }
+//    func tableView(_ tableView: UITableView,
+//                   viewForHeaderInSection section: Int) -> UIView? {
+//        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+//                                                                "sectionHeader") as! CustomHeader
+//        view.image.image = UIImage(named:"macAD")
+////        UIImage.animatedImageNamed(images[activeImageIndex], duration: 10)
+////        self.activeImageIndex += 1
+//        return view
+//    }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return  30
-    }
+    
+    
+    //MARK: CEll
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PhotoListTableViewCell
         if ((photoList?.isEmpty) == nil) {
                 print("Nil")
         }
+        
         else{
             
             cell.imageView?.image = UIImage(named: "default.png")
@@ -109,11 +140,16 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
                                         progressBlock: nil)
             
             cell.autherLabel.text =  photoList?[indexPath.section][indexPath.row].author
+            cell.imageView?.contentMode = .scaleAspectFit
+
+//            cell.imageView?.layer.masksToBounds = true
+
+
             return cell
         }
         return UITableViewCell()
     }
-    
+    //MARK: didSelectRowAt
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
           let photoDetails = self.storyboard?.instantiateViewController(identifier: "photoDetailsScreen") as! PhotoDetailsViewController
@@ -124,6 +160,8 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
           self.present(photoDetails, animated: true, completion: nil)
 
       }
+    
 }
+
 
 
