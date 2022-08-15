@@ -6,15 +6,30 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotoDetailsViewController: UIViewController {
 
     @IBOutlet var backgroundview: UIView!
     @IBOutlet weak var photoImage: UIImageView!
+    var url : String?
+    var photoDetailsViewModel = PhotosDetailsViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        guard let imageUrl = URL(string: self.url ?? "") else {
+            return
+        }
+        self.photoDetailsViewModel.getBackgoundColor(url: imageUrl) { color in
+            self.backgroundview.backgroundColor = color
+        }
+        self.photoImage?.kf.setImage(with: imageUrl,
+                                 placeholder: UIImage(named: "default.png") ,
+                                 options: nil,
+                                    progressBlock: nil)
+        
     }
     
 
