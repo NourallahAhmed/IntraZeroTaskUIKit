@@ -9,7 +9,7 @@ import Foundation
 import Network
 
 protocol photosListProtocol {
-    func changePage(page:String)
+    func changePage(page:String , completion : @escaping ([[Photo]]) -> Void)
 }
 class PhotosListViewModel : photosListProtocol {
     
@@ -25,7 +25,7 @@ class PhotosListViewModel : photosListProtocol {
     init( view : PhotoListViewController ){
         self.photoListView = view
     }
-    func changePage(page: String) {
+    func changePage(page: String , completion : @escaping ([[Photo]]) -> Void) {
         self.photoLoaded = false
         DispatchQueue.global(qos: .userInitiated).async {
             self.networkLayer.changePage(page: page ,completion: { result in
@@ -36,6 +36,10 @@ class PhotosListViewModel : photosListProtocol {
                     self.photosList = photos
                     self.photosListGrouped =  self.photosList.dividedIntoGroups(of: 5)
                     self.photoLoaded = true
+//                    print("ViewModel")
+//                    print(self.photosList)
+//                    print(self.photosListGrouped)
+                    completion(self.photosListGrouped)
                 }
             })
         }
