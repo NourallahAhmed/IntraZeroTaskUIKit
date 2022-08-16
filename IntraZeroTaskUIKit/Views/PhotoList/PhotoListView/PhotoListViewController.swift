@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SwiftUI
 class PhotoListViewController: UIViewController {
 
     
@@ -76,7 +77,7 @@ class PhotoListViewController: UIViewController {
     func RequestData(){
         self.photoListViewModel?.changePage(page: String(page),completion: { photoGrouped in
             self.photoList = photoGrouped
-            self.photosTableVIew.rowHeight =  200 // UIScreen.main.bounds.height / 4
+//            self.photosTableVIew.rowHeight = UIScreen.main.bounds.height / 4
             self.nextBtnText.setTitle("next", for: UIControl.State.normal)
             self.photosTableVIew.reloadData()
             self.pageNum.text = self.page.description
@@ -115,8 +116,8 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
 //        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
 //                                                                "sectionHeader") as! CustomHeader
 //        view.image.image = UIImage(named:"macAD")
-////        UIImage.animatedImageNamed(images[activeImageIndex], duration: 10)
-////        self.activeImageIndex += 1
+//        UIImage.animatedImageNamed(images[activeImageIndex], duration: 10)
+//        self.activeImageIndex += 1
 //        return view
 //    }
     
@@ -142,9 +143,6 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
             cell.autherLabel.text =  photoList?[indexPath.section][indexPath.row].author
             cell.imageView?.contentMode = .scaleAspectFit
 
-//            cell.imageView?.layer.masksToBounds = true
-
-
             return cell
         }
         return UITableViewCell()
@@ -156,8 +154,10 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
           photoDetails.url = photoList?[0][indexPath.row].downloadUrl
 
          photoDetails.modalPresentationStyle = .automatic
+         
+         
+         navigationController?.pushViewController(photoDetails, animated: true)
 
-          self.present(photoDetails, animated: true, completion: nil)
 
       }
     

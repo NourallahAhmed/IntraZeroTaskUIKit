@@ -7,7 +7,8 @@
 
 import UIKit
 import Kingfisher
-
+import RxSwift
+import RxCocoa
 class PhotoDetailsViewController: UIViewController {
 
     @IBOutlet var backgroundview: UIView!
@@ -22,15 +23,21 @@ class PhotoDetailsViewController: UIViewController {
         guard let imageUrl = URL(string: self.url ?? "") else {
             return
         }
+        
+        
+        
         self.photoDetailsViewModel.getBackgoundColor(url: imageUrl) { color in
             self.backgroundview.backgroundColor = color
+            self.photoImage?.kf.setImage(with: imageUrl,
+                                         placeholder: UIImage(named: "default.png") ,
+                                         options: nil,
+                                         progressBlock: nil)
+
+            }
+            
         }
-        self.photoImage?.kf.setImage(with: imageUrl,
-                                 placeholder: UIImage(named: "default.png") ,
-                                 options: nil,
-                                    progressBlock: nil)
-        
-    }
+     
+    
     
 
     /*

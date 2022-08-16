@@ -6,10 +6,11 @@ target 'IntraZeroTaskUIKit' do
   use_frameworks!
 
   # Pods for IntraZeroTaskUIKit
- pod 'Alamofire','~> 5.0.0-rc.2'
-  pod 'Kingfisher', '~> 6.3.1'
-  pod 'UIImageColors'
-  pod 'swift-vibrant'
+pod 'Alamofire','~> 5.0.0-rc.2'
+pod 'Kingfisher', '~> 6.3.1'
+pod 'UIImageColors'
+pod 'RxSwift' , '6.5.0'
+pod 'RxCocoa' , '6.5.0'
   target 'IntraZeroTaskUIKitTests' do
     inherit! :search_paths
     # Pods for testing

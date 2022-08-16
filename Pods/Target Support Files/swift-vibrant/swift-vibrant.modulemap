@@ -1,6 +1,0 @@
-framework module swift_vibrant {
-  umbrella header "swift-vibrant-umbrella.h"
-
-  export *
-  module * { export * }
-}

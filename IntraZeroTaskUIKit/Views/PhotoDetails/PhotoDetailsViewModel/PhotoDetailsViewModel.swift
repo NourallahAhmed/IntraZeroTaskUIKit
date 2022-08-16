@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 import UIImageColors
 class PhotosDetailsViewModel  {
-    var backgroundColor : UIColor?
+    private var backgroundColor : UIColor?
+     var loaded = false
     private var imageData : Data?
     func getBackgoundColor(url : URL , completion: @escaping (UIColor) -> Void) {
         self.backgroundColor = .white
@@ -19,6 +20,7 @@ class PhotosDetailsViewModel  {
                 self.imageData = imageData2
                 let image = UIImage(data: self.imageData!)
                 self.backgroundColor = image?.getColors()?.primary
+                self.loaded = true
                 completion(self.backgroundColor ?? .white)
             }
         }
