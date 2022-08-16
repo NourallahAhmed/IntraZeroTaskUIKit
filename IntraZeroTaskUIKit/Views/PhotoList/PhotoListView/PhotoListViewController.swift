@@ -36,15 +36,14 @@ class PhotoListViewController: UIViewController {
         
         self.pageNum.text = ""
 
-        self.photoListViewModel = PhotosListViewModel(view: self)
+        self.photoListViewModel = PhotosListViewModel(appDelegate: UIApplication.shared.delegate as! AppDelegate)
        
         self.RequestData()
         self.pageTitle.text = "Welcome"
         self.previousBtnText.setTitle("", for: UIControl.State.normal)
-//
-//        self.photosTableVIew.register(CustomHeader.self,
-//            forHeaderFooterViewReuseIdentifier: "sectionHeader")
-//        self.photosTableVIew.contentInset = UIEdgeInsets(top: -1, left: 0, bottom: 0, right: 0)
+
+        self.photosTableVIew.register(CustomHeader.self,
+            forHeaderFooterViewReuseIdentifier: "sectionHeader")
 
         
     }
@@ -74,6 +73,9 @@ class PhotoListViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    
     func RequestData(){
         self.photoListViewModel?.changePage(page: String(page),completion: { photoGrouped in
             self.photoList = photoGrouped
@@ -94,54 +96,40 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return photoList?[section].count ?? 0
     }
+    
+    
+    
+    //MARK: AD placecHolder
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 0 : 40
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                                                "sectionHeader") as! CustomHeader
+        view.image.image = UIImage(named:"macAD")
 
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let adView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 30))
-//
-//        adView.image = UIImage( named: "macAD")
-//
-//        return adView
-//    }
-//
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return  30
-//    }
-//
-//     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return section == 0 ? 0 : 32
-//        }
-//    func tableView(_ tableView: UITableView,
-//                   viewForHeaderInSection section: Int) -> UIView? {
-//        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-//                                                                "sectionHeader") as! CustomHeader
-//        view.image.image = UIImage(named:"macAD")
-//        UIImage.animatedImageNamed(images[activeImageIndex], duration: 10)
-//        self.activeImageIndex += 1
-//        return view
-//    }
+        return view
+    }
     
     
     
     //MARK: CEll
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PhotoListTableViewCell
-        if ((photoList?.isEmpty) == nil) {
-                print("Nil")
-        }
-        
-        else{
-            
+        if ((photoList?.isEmpty) != nil) {
+
             cell.imageView?.image = UIImage(named: "default.png")
-       
+            
             let imageUrl = URL(string: photoList?[indexPath.section][indexPath.row].downloadUrl ?? "")
+            
             cell.imageView?.kf.setImage(with: imageUrl,
                                      placeholder: UIImage(named: "default.png") ,
                                      options: nil,
                                         progressBlock: nil)
             
             cell.autherLabel.text =  photoList?[indexPath.section][indexPath.row].author
-            cell.imageView?.contentMode = .scaleAspectFit
 
             return cell
         }

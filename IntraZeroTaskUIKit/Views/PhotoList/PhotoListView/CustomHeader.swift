@@ -39,12 +39,11 @@ class CustomHeader: UITableViewHeaderFooterView {
 
             contentView.addSubview(image)
 
-            // Center the image vertically and place it near the leading
-            // edge of the view. Constrain its width and height to 50 points.
+       
             NSLayoutConstraint.activate([
                 image.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-                image.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-                image.heightAnchor.constraint(equalToConstant: 70),
+                image.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 5),
+                image.heightAnchor.constraint(equalToConstant: 90),
                 image.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
          

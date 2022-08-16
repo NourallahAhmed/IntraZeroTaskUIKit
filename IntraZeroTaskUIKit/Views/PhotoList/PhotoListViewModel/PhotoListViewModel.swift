@@ -10,41 +10,75 @@ import Network
 
 protocol photosListProtocol {
     func changePage(page:String , completion : @escaping ([[Photo]]) -> Void)
+    func saveOffline(photosList: [Photo]) -> Void
+    func fetchLocalData()
 }
 class PhotosListViewModel : photosListProtocol {
+    
     
     var photosList : [Photo] = [Photo] ()
     var photosListGrouped = [[Photo]]()
     var photoLoaded = false
-    var photoListView : PhotoListViewController?
     
-    //MARK: Network
+    //MARK: CoreData
+    var appDelegate : AppDelegate
+    var dataBaseInstance : DataBaseHandling?
+    
+    //MARK: NetworkLayer
     var networkLayer = NetworkAPI.networkApi
    
+    //MARK: NetworkConnection
+    var monitor = NWPathMonitor()
+    let queue = DispatchQueue(label: "InternetConnectionMonitor")
+
     
-    init( view : PhotoListViewController ){
-        self.photoListView = view
+    init( appDelegate :  AppDelegate ){
+        self.appDelegate  = appDelegate
+        self.dataBaseInstance = DataBaseHandling(appDelegate: self.appDelegate)
     }
     func changePage(page: String , completion : @escaping ([[Photo]]) -> Void) {
         self.photoLoaded = false
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.networkLayer.changePage(page: page ,completion: { result in
-                DispatchQueue.main.async {
-                    guard let photos = try? result.get() else{
-                        return
-                    }
-                    self.photosList = photos
-                    self.photosListGrouped =  self.photosList.dividedIntoGroups(of: 5)
-                    self.photoLoaded = true
-//                    print("ViewModel")
-//                    print(self.photosList)
-//                    print(self.photosListGrouped)
-                    completion(self.photosListGrouped)
+        
+        monitor.pathUpdateHandler = { [weak self] pathUpdateHandler  in
+           if pathUpdateHandler.status == .satisfied {
+               DispatchQueue.global(qos: .userInitiated).async {
+                   self?.networkLayer.changePage(page: page ,completion: { result in
+                       DispatchQueue.main.async {
+                           guard let photos = try? result.get() else{
+                               return
+                           }
+                           self?.photosList = photos
+                           self?.photosListGrouped =  self?.photosList.dividedIntoGroups(of: 5) ?? [[]]
+                           self?.photoLoaded = true
+                           //TODO: Save Local
+                           self?.saveOffline(photosList: self?.photosList ?? [])
+                           completion(self?.photosListGrouped ?? [[]])
+                       }
+                   })
+               }
+           }
+            else{
+                DispatchQueue.global(qos: .userInitiated).async {
+                        self?.fetchLocalData()
                 }
-            })
+                DispatchQueue.main.async{
+                    completion(self?.photosListGrouped ?? [[]])
+
+                }
+            }
         }
+        monitor.start(queue: queue)
     }
     
+    
+    func saveOffline(photosList: [Photo]) {
+        self.dataBaseInstance?.saveLocally(photoslist: photosList)
+    }
+    
+    func fetchLocalData(){
+        self.photosList = self.dataBaseInstance?.getLocalData() ?? []
+        self.photosListGrouped  = self.photosList.dividedIntoGroups(of: 5)
+    }
   
 }
 

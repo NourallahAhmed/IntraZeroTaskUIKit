@@ -1,38 +1,24 @@
 PODS:
   - Alamofire (5.0.5)
   - Kingfisher (6.3.1)
-  - RxCocoa (6.5.0):
-    - RxRelay (= 6.5.0)
-    - RxSwift (= 6.5.0)
-  - RxRelay (6.5.0):
-    - RxSwift (= 6.5.0)
-  - RxSwift (6.5.0)
   - UIImageColors (2.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.2)
   - Kingfisher (~> 6.3.1)
-  - RxCocoa (= 6.5.0)
-  - RxSwift (= 6.5.0)
   - UIImageColors
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Kingfisher
-    - RxCocoa
-    - RxRelay
-    - RxSwift
     - UIImageColors
 
 SPEC CHECKSUMS:
   Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
-  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
-  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
-  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: 5a8a9aea3235e4b7fe2e463f52973c3e926be7a4
+PODFILE CHECKSUM: e130f7cbed58ba5b00fbc823ec1bea0ff3718d24
 
 COCOAPODS: 1.11.3

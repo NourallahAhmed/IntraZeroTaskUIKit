@@ -7,8 +7,7 @@
 
 import UIKit
 import Kingfisher
-import RxSwift
-import RxCocoa
+
 class PhotoDetailsViewController: UIViewController {
 
     @IBOutlet var backgroundview: UIView!

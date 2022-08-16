@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		420A6687FCA654C4373C4378 /* Pods_IntraZeroTaskUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1711CF13DE9E159F79153E /* Pods_IntraZeroTaskUIKit.framework */; };
+		9B9ECA3E28ABF5FF00E36D3A /* DataBaseHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9ECA3D28ABF5FF00E36D3A /* DataBaseHandling.swift */; };
 		9BA1CE9E28AAD645007D2159 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1CE9D28AAD645007D2159 /* CustomHeader.swift */; };
 		9BA6F6BB28A9D335006E37C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6F6BA28A9D335006E37C7 /* AppDelegate.swift */; };
 		9BA6F6BD28A9D335006E37C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6F6BC28A9D335006E37C7 /* SceneDelegate.swift */; };
@@ -55,6 +56,7 @@
 		317A0470E7698F0090B0BDB7 /* Pods_IntraZeroTaskUIKit_IntraZeroTaskUIKitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTaskUIKit_IntraZeroTaskUIKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4705250CB3D00448C3ED04AB /* Pods_IntraZeroTaskUIKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTaskUIKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA79E8732B2F9CF94BAADF1 /* Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests.release.xcconfig"; path = "Target Support Files/Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests/Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9B9ECA3D28ABF5FF00E36D3A /* DataBaseHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseHandling.swift; sourceTree = "<group>"; };
 		9BA1CE9D28AAD645007D2159 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		9BA6F6B728A9D335006E37C7 /* IntraZeroTaskUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntraZeroTaskUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BA6F6BA28A9D335006E37C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		9BA6F6F228A9D3AB006E37C7 /* CoreDataServices */ = {
 			isa = PBXGroup;
 			children = (
+				9B9ECA3D28ABF5FF00E36D3A /* DataBaseHandling.swift */,
 			);
 			path = CoreDataServices;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				9BA6F6F728A9D3E9006E37C7 /* NetworkAPi.swift in Sources */,
 				9BA6F70B28A9D573006E37C7 /* PhotoDetailsViewModel.swift in Sources */,
 				9BA6F6EF28A9D365006E37C7 /* Photo.swift in Sources */,
+				9B9ECA3E28ABF5FF00E36D3A /* DataBaseHandling.swift in Sources */,
 				9BA1CE9E28AAD645007D2159 /* CustomHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
