@@ -159,6 +159,7 @@
 				9BA6F6F028A9D384006E37C7 /* Services */,
 				9BA6F6ED28A9D34D006E37C7 /* Model */,
 				9BA6F6BA28A9D335006E37C7 /* AppDelegate.swift */,
+				9BA6F6BE28A9D335006E37C7 /* ViewController.swift */,
 				9BA6F6BC28A9D335006E37C7 /* SceneDelegate.swift */,
 				9BA6F6C028A9D335006E37C7 /* Main.storyboard */,
 				9BA6F6C628A9D339006E37C7 /* Assets.xcassets */,
@@ -260,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				9BA6F70028A9D4C1006E37C7 /* PhotoListViewController.swift */,
-				9BA6F6BE28A9D335006E37C7 /* ViewController.swift */,
 				9BA6F70C28A9D818006E37C7 /* PhotoListTableViewCell.swift */,
 				9BA1CE9D28AAD645007D2159 /* CustomHeader.swift */,
 			);

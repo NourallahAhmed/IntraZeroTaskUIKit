@@ -8,6 +8,9 @@
 import UIKit
 import Kingfisher
 import SwiftUI
+//protocol PhotoListViewControllerProtocol {
+//    func NetworkStatus( networkState : Bool)
+//}
 class PhotoListViewController: UIViewController {
 
     
@@ -28,6 +31,8 @@ class PhotoListViewController: UIViewController {
     var activeImageIndex = 0
     
     let imageSwitchTimer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    let startIndexPath : IndexPath = IndexPath(row: 0, section: 0)
+    let indicator = UIActivityIndicatorView(style: .large)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,21 +46,32 @@ class PhotoListViewController: UIViewController {
         self.RequestData()
         self.pageTitle.text = "Welcome"
         self.previousBtnText.setTitle("", for: UIControl.State.normal)
+        self.nextBtnText.setTitle("", for: UIControl.State.normal)
 
         self.photosTableVIew.register(CustomHeader.self,
             forHeaderFooterViewReuseIdentifier: "sectionHeader")
-
+        
+        
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
         
     }
     @IBAction func nextBtn(_ sender: UIButton) {
+        self.indicator.startAnimating()
+
         self.previousBtnText.setTitle("previous", for: UIControl.State.normal)
         self.page += 1
+        self.photosTableVIew.scrollToRow(at: startIndexPath , at: .top , animated: true)
+
         self.RequestData()
+        self.indicator.stopAnimating()
         
     }
     @IBAction func previousBtn(_ sender: UIButton) {
         if page > 0 {
             self.page -= 1
+            self.photosTableVIew.scrollToRow(at: startIndexPath , at: .top , animated: true)
+
             self.RequestData()
         }
         if page == 1{
@@ -148,8 +164,27 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
 
 
       }
-    
+    //MARK: ANIMATION
+   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            cell.alpha = 0
+            let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
+            cell.layer.transform = transform
+            UITableView.animate(withDuration: 1.0) {
+                cell.alpha = 1
+                cell.layer.transform = CATransform3DIdentity
+            }
+        }
 }
 
 
 
+//extension PhotoListViewController : PhotoListViewControllerProtocol {
+//    func NetworkStatus(networkState: Bool) {
+//        if networkState == false {
+//            let imageViewBackground = UIImageView()
+//            imageViewBackground.image = UIImage(named: "offline")
+//            imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFit
+//            self.photosTableVIew.backgroundView = imageViewBackground
+//        }
+//    }
+//}
