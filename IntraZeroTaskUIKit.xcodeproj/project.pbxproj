@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		420A6687FCA654C4373C4378 /* Pods_IntraZeroTaskUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1711CF13DE9E159F79153E /* Pods_IntraZeroTaskUIKit.framework */; };
+		9B35FE1828AD0817004A2C24 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B35FE1728AD0817004A2C24 /* DependencyProvider.swift */; };
+		9B6BBFFB28AD3A4100FB597C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6BBFFA28AD3A4100FB597C /* CardView.swift */; };
 		9B9ECA3E28ABF5FF00E36D3A /* DataBaseHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9ECA3D28ABF5FF00E36D3A /* DataBaseHandling.swift */; };
 		9BA1CE9E28AAD645007D2159 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1CE9D28AAD645007D2159 /* CustomHeader.swift */; };
 		9BA6F6BB28A9D335006E37C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6F6BA28A9D335006E37C7 /* AppDelegate.swift */; };
@@ -56,6 +58,8 @@
 		317A0470E7698F0090B0BDB7 /* Pods_IntraZeroTaskUIKit_IntraZeroTaskUIKitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTaskUIKit_IntraZeroTaskUIKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4705250CB3D00448C3ED04AB /* Pods_IntraZeroTaskUIKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTaskUIKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA79E8732B2F9CF94BAADF1 /* Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests.release.xcconfig"; path = "Target Support Files/Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests/Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9B35FE1728AD0817004A2C24 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
+		9B6BBFFA28AD3A4100FB597C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		9B9ECA3D28ABF5FF00E36D3A /* DataBaseHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseHandling.swift; sourceTree = "<group>"; };
 		9BA1CE9D28AAD645007D2159 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		9BA6F6B728A9D335006E37C7 /* IntraZeroTaskUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntraZeroTaskUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +134,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9B35FE1528AD07E1004A2C24 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9B6BBFF928AD39F300FB597C /* CustomCardView */,
+				9B35FE1628AD07F2004A2C24 /* DependencyProvider */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9B35FE1628AD07F2004A2C24 /* DependencyProvider */ = {
+			isa = PBXGroup;
+			children = (
+				9B35FE1728AD0817004A2C24 /* DependencyProvider.swift */,
+			);
+			path = DependencyProvider;
+			sourceTree = "<group>";
+		};
+		9B6BBFF928AD39F300FB597C /* CustomCardView */ = {
+			isa = PBXGroup;
+			children = (
+				9B6BBFFA28AD3A4100FB597C /* CardView.swift */,
+			);
+			path = CustomCardView;
+			sourceTree = "<group>";
+		};
 		9BA6F6AE28A9D335006E37C7 = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +184,7 @@
 		9BA6F6B928A9D335006E37C7 /* IntraZeroTaskUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				9B35FE1528AD07E1004A2C24 /* Utils */,
 				9BA6F6FD28A9D46F006E37C7 /* Views */,
 				9BA6F6F028A9D384006E37C7 /* Services */,
 				9BA6F6ED28A9D34D006E37C7 /* Model */,
@@ -559,7 +589,9 @@
 				9BA6F6F528A9D3DA006E37C7 /* NetworkRequest.swift in Sources */,
 				9BA6F70828A9D552006E37C7 /* PhotoDetailsViewController.swift in Sources */,
 				9BA6F6FA28A9D400006E37C7 /* BaseAPI.swift in Sources */,
+				9B6BBFFB28AD3A4100FB597C /* CardView.swift in Sources */,
 				9BA6F70D28A9D818006E37C7 /* PhotoListTableViewCell.swift in Sources */,
+				9B35FE1828AD0817004A2C24 /* DependencyProvider.swift in Sources */,
 				9BA6F6F728A9D3E9006E37C7 /* NetworkAPi.swift in Sources */,
 				9BA6F70B28A9D573006E37C7 /* PhotoDetailsViewModel.swift in Sources */,
 				9BA6F6EF28A9D365006E37C7 /* Photo.swift in Sources */,

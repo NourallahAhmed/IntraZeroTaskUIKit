@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lbf-9m-7uw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -11,19 +11,19 @@
         <!--Photo List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PhotoListViewController" customModule="IntraZeroTaskUIKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cv" id="BYZ-38-t0r" customClass="PhotoListViewController" customModule="IntraZeroTaskUIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krG-Dr-YVz">
-                                <rect key="frame" x="96" y="113" width="199" height="20.5"/>
+                                <rect key="frame" x="96" y="69" width="199" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MH1-7U-zk2">
-                                <rect key="frame" x="0.0" y="184" width="414" height="615"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="659"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="104" id="H8G-29-bQP" customClass="PhotoListTableViewCell" customModule="IntraZeroTaskUIKit" customModuleProvider="target">
@@ -65,6 +65,7 @@
                                         <connections>
                                             <outlet property="autherLabel" destination="3fE-0r-FhP" id="BQx-vH-OxG"/>
                                             <outlet property="photoImage" destination="kZa-a4-Z2u" id="CU1-Vt-FNf"/>
+                                            <segue destination="NHx-RY-wNp" kind="showDetail" identifier="ToDetails" id="Rmj-Iz-Sz5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -130,23 +131,33 @@
             <objects>
                 <viewController storyboardIdentifier="photoDetailsScreen" id="NHx-RY-wNp" customClass="PhotoDetailsViewController" customModule="IntraZeroTaskUIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OgZ-LI-LzQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q9n-TH-oIa">
-                                <rect key="frame" x="47" y="239" width="324" height="406"/>
+                                <rect key="frame" x="47" y="217" width="324" height="408"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uC-5t-ZXh">
+                                <rect key="frame" x="16" y="60" width="98" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="backBtn:" destination="NHx-RY-wNp" eventType="touchUpInside" id="FFJ-bB-fdL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Plk-aT-gKE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Plk-aT-gKE" firstAttribute="trailing" secondItem="q9n-TH-oIa" secondAttribute="trailing" constant="43" id="DcH-8u-9be"/>
                             <constraint firstItem="q9n-TH-oIa" firstAttribute="leading" secondItem="Plk-aT-gKE" secondAttribute="leading" constant="47" id="KqC-4j-5h3"/>
+                            <constraint firstItem="7uC-5t-ZXh" firstAttribute="leading" secondItem="Plk-aT-gKE" secondAttribute="leading" constant="16" id="UHb-fS-bMJ"/>
+                            <constraint firstItem="Plk-aT-gKE" firstAttribute="trailing" secondItem="7uC-5t-ZXh" secondAttribute="trailing" constant="300" id="YQs-lB-Gal"/>
                             <constraint firstItem="Plk-aT-gKE" firstAttribute="bottom" secondItem="q9n-TH-oIa" secondAttribute="bottom" constant="217" id="iGX-Ay-qQi"/>
-                            <constraint firstItem="q9n-TH-oIa" firstAttribute="top" secondItem="Plk-aT-gKE" secondAttribute="top" constant="195" id="mkH-xX-Poo"/>
+                            <constraint firstItem="q9n-TH-oIa" firstAttribute="top" secondItem="7uC-5t-ZXh" secondAttribute="bottom" constant="126" id="tFx-Xk-rgi"/>
+                            <constraint firstItem="7uC-5t-ZXh" firstAttribute="top" secondItem="OgZ-LI-LzQ" secondAttribute="topMargin" constant="16" id="xpp-54-nF2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="SLX-GQ-tGw"/>
                     <connections>
                         <outlet property="backgroundview" destination="OgZ-LI-LzQ" id="CQC-Zr-vdS"/>
                         <outlet property="photoImage" destination="q9n-TH-oIa" id="J6L-bn-wfe"/>
@@ -156,19 +167,16 @@
             </objects>
             <point key="canvasLocation" x="1834.7826086956522" y="44.866071428571423"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--My Navigation View Controller-->
         <scene sceneID="SJr-K2-OMB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lbf-9m-7uw" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lbf-9m-7uw" customClass="MyNavigationViewController" customModule="IntraZeroTaskUIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="amB-Jw-9qY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="FLC-R9-72u"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pxk-r7-a1k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

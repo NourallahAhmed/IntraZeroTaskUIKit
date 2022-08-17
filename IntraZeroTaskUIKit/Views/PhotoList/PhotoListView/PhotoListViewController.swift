@@ -8,9 +8,7 @@
 import UIKit
 import Kingfisher
 import SwiftUI
-//protocol PhotoListViewControllerProtocol {
-//    func NetworkStatus( networkState : Bool)
-//}
+
 class PhotoListViewController: UIViewController {
 
     
@@ -33,15 +31,13 @@ class PhotoListViewController: UIViewController {
     let imageSwitchTimer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     let startIndexPath : IndexPath = IndexPath(row: 0, section: 0)
     let indicator = UIActivityIndicatorView(style: .large)
-
+    var selectedURLImage = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.photosTableVIew.delegate = self
         self.photosTableVIew.dataSource = self
         
         self.pageNum.text = ""
-
-        self.photoListViewModel = PhotosListViewModel(appDelegate: UIApplication.shared.delegate as! AppDelegate)
        
         self.RequestData()
         self.pageTitle.text = "Welcome"
@@ -80,15 +76,28 @@ class PhotoListViewController: UIViewController {
         }
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+    
+
+        if segue.identifier == "ToDetails"{
+
+            let detailsView = segue.destination as!  PhotoDetailsViewController
+            let indexpath = self.photosTableVIew.indexPathForSelectedRow
+            let indexurl = photoList?[indexpath!.section][indexpath!.row].downloadUrl ?? ""
+            
+            detailsView.modalPresentationStyle = .fullScreen
+            detailsView.url = indexurl
+        }
+       
     }
-    */
+    
     
     
     
@@ -144,6 +153,9 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
                                      placeholder: UIImage(named: "default.png") ,
                                      options: nil,
                                         progressBlock: nil)
+            cell.imageView?.layer.cornerRadius = 20
+            cell.imageView?.layer.masksToBounds = true
+            cell.imageView?.clipsToBounds = true
             
             cell.autherLabel.text =  photoList?[indexPath.section][indexPath.row].author
 
@@ -154,13 +166,8 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
     //MARK: didSelectRowAt
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
-          let photoDetails = self.storyboard?.instantiateViewController(identifier: "photoDetailsScreen") as! PhotoDetailsViewController
-          photoDetails.url = photoList?[0][indexPath.row].downloadUrl
+         self.selectedURLImage = photoList?[0][indexPath.row].downloadUrl ?? ""
 
-         photoDetails.modalPresentationStyle = .automatic
-         
-         
-         navigationController?.pushViewController(photoDetails, animated: true)
 
 
       }

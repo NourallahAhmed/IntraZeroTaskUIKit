@@ -11,6 +11,10 @@ import Kingfisher
 class PhotoDetailsViewController: UIViewController {
 
     @IBOutlet var backgroundview: UIView!
+    @IBAction func backBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+
+    }
     @IBOutlet weak var photoImage: UIImageView!
     var url : String?
     var photoDetailsViewModel = PhotosDetailsViewModel()
@@ -31,7 +35,9 @@ class PhotoDetailsViewController: UIViewController {
                                          placeholder: UIImage(named: "default.png") ,
                                          options: nil,
                                          progressBlock: nil)
-
+            self.photoImage?.layer.cornerRadius = 30
+            self.photoImage?.layer.masksToBounds = true
+            self.photoImage?.clipsToBounds = true
             }
             
         }

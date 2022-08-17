@@ -25,17 +25,20 @@ class PhotosListViewModel : photosListProtocol {
     var dataBaseInstance : DataBaseHandling?
     
     //MARK: NetworkLayer
-    var networkLayer = NetworkAPI.networkApi
+    var networkLayer : NetworkAPIProtocol
    
     //MARK: NetworkConnection
     var monitor = NWPathMonitor()
     let queue = DispatchQueue(label: "InternetConnectionMonitor")
 
     
-    init( appDelegate :  AppDelegate ){
+    init( appDelegate :  AppDelegate , networkLayer : NetworkAPIProtocol){
         self.appDelegate  = appDelegate
         self.dataBaseInstance = DataBaseHandling(appDelegate: self.appDelegate)
+        self.networkLayer = networkLayer
     }
+    
+    
     func changePage(page: String , completion : @escaping ([[Photo]]) -> Void) {
         self.photoLoaded = false
         
