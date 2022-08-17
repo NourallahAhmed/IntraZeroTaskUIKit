@@ -46,7 +46,8 @@ class PhotoListViewController: UIViewController {
 
         self.photosTableVIew.register(CustomHeader.self,
             forHeaderFooterViewReuseIdentifier: "sectionHeader")
-        
+        self.photosTableVIew.separatorStyle = .none
+
         
         indicator.center = self.view.center
         self.view.addSubview(indicator)
@@ -104,7 +105,7 @@ class PhotoListViewController: UIViewController {
     func RequestData(){
         self.photoListViewModel?.changePage(page: String(page),completion: { photoGrouped in
             self.photoList = photoGrouped
-//            self.photosTableVIew.rowHeight = UIScreen.main.bounds.height / 4
+            self.photosTableVIew.rowHeight = UIScreen.main.bounds.height / 4
             self.nextBtnText.setTitle("next", for: UIControl.State.normal)
             self.photosTableVIew.reloadData()
             self.pageNum.text = self.page.description
@@ -144,21 +145,22 @@ extension PhotoListViewController : UITableViewDelegate , UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PhotoListTableViewCell
         if ((photoList?.isEmpty) != nil) {
-
-            cell.imageView?.image = UIImage(named: "default.png")
             
+
+//            cell.imageView?.image = UIImage(named: "default.png")
+//
             let imageUrl = URL(string: photoList?[indexPath.section][indexPath.row].downloadUrl ?? "")
-            
-            cell.imageView?.kf.setImage(with: imageUrl,
-                                     placeholder: UIImage(named: "default.png") ,
-                                     options: nil,
-                                        progressBlock: nil)
-            cell.imageView?.layer.cornerRadius = 20
-            cell.imageView?.layer.masksToBounds = true
-            cell.imageView?.clipsToBounds = true
-            
-            cell.autherLabel.text =  photoList?[indexPath.section][indexPath.row].author
 
+            
+            
+            cell.CustomView.cardImage.kf.setImage(with: imageUrl,
+                          placeholder: UIImage(named: "default.png") ,
+                          options: nil,
+                          progressBlock: nil)
+
+           
+            cell.CustomView.titleLabel.text = photoList?[indexPath.section][indexPath.row].author
+            
             return cell
         }
         return UITableViewCell()

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		420A6687FCA654C4373C4378 /* Pods_IntraZeroTaskUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1711CF13DE9E159F79153E /* Pods_IntraZeroTaskUIKit.framework */; };
+		9B0C27B828AD7A0B00CA5965 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C27B728AD7A0B00CA5965 /* CustomView.swift */; };
 		9B35FE1828AD0817004A2C24 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B35FE1728AD0817004A2C24 /* DependencyProvider.swift */; };
 		9B6BBFFB28AD3A4100FB597C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6BBFFA28AD3A4100FB597C /* CardView.swift */; };
 		9B9ECA3E28ABF5FF00E36D3A /* DataBaseHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9ECA3D28ABF5FF00E36D3A /* DataBaseHandling.swift */; };
@@ -58,6 +59,7 @@
 		317A0470E7698F0090B0BDB7 /* Pods_IntraZeroTaskUIKit_IntraZeroTaskUIKitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTaskUIKit_IntraZeroTaskUIKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4705250CB3D00448C3ED04AB /* Pods_IntraZeroTaskUIKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTaskUIKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA79E8732B2F9CF94BAADF1 /* Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests.release.xcconfig"; path = "Target Support Files/Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests/Pods-IntraZeroTaskUIKit-IntraZeroTaskUIKitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9B0C27B728AD7A0B00CA5965 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		9B35FE1728AD0817004A2C24 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		9B6BBFFA28AD3A4100FB597C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		9B9ECA3D28ABF5FF00E36D3A /* DataBaseHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseHandling.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				9B6BBFFA28AD3A4100FB597C /* CardView.swift */,
+				9B0C27B728AD7A0B00CA5965 /* CustomView.swift */,
 			);
 			path = CustomCardView;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				9BA6F6FC28A9D418006E37C7 /* TargetType.swift in Sources */,
 				9BA6F6BD28A9D335006E37C7 /* SceneDelegate.swift in Sources */,
 				9BA6F70128A9D4C1006E37C7 /* PhotoListViewController.swift in Sources */,
+				9B0C27B828AD7A0B00CA5965 /* CustomView.swift in Sources */,
 				9BA6F6F528A9D3DA006E37C7 /* NetworkRequest.swift in Sources */,
 				9BA6F70828A9D552006E37C7 /* PhotoDetailsViewController.swift in Sources */,
 				9BA6F6FA28A9D400006E37C7 /* BaseAPI.swift in Sources */,

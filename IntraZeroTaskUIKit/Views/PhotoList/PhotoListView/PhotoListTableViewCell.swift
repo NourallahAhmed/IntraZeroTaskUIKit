@@ -10,6 +10,7 @@ import UIKit
 class PhotoListTableViewCell: UITableViewCell {
     @IBOutlet weak var photoImage: UIImageView!
     
+    @IBOutlet weak var CustomView: CustomView!
     @IBOutlet weak var autherLabel: UILabel!
 //    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
 //        super.init(style: style, reuseIdentifier: reuseIdentifier)
